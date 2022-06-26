@@ -15,6 +15,7 @@ class DiffieHellman:
             raise Exception()
         
         # Generisanje privatnog ključa
+        
         self.dh_gen_privatni()
         print(self.privatni)
 

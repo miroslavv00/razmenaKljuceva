@@ -20,11 +20,13 @@ if osnova == osnova2 and moduo == moduo2:
     # Deklaracija i inicijalizacija objekta za vršenje algoritma
     DH = DHKE.DiffieHellman(int(moduo), int(osnova))
     DH.dh_racunaj_javni()
+    print("Javni ključ za klijenta 2 je: ",DH.javni)
     # Razmena javnih ključeva
     klijent1.send(str(DH.javni).encode())
     javniKljuc2 = klijent1.recv(4096)
+    print("Javni ključ za klijenta 1 je: ",javniKljuc2.decode())
     DH.dh_tajni(int(javniKljuc2.decode()))
-    print('ISPIS TAJNOG KLJUČA: ', DH.tajni)
+    print("Tajni ključ je: ",DH.tajni)
 else:
     print("Osnova i moduo se ne slažu!")
     klijent1.close()
